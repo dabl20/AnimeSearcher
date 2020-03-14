@@ -1,0 +1,16 @@
+* {
+  margin: 2px;
+}
+body {
+  background-color: aquamarine;
+}
+#root {
+  background-color: burlywood;
+  max-width: 960px;
+  margin: 5px 0 5px 0 ;
+}
+form input {
+  background-color: antiquewhite;
+  width: 100%;
+  font-size: larger;
+}

@@ -8,12 +8,15 @@ function formRender() {
   document.querySelector('body').prepend(root);
 
   let form = document.createElement('form');
-  //form.setAttribute('target', '_self')
   root.append(form);
 
   let input = document.createElement('input');
   input.setAttribute('type', 'text');
   form.append(input);
+
+  let wraper = document.createElement('div');
+  wraper.setAttribute('id', 'wraper');
+  root.append(wraper);
 }
 
 document.forms[0].addEventListener('submit', function (event) {
@@ -36,10 +39,10 @@ function animeRender(id) {
 function addAnime(data) {
         let anime = document.createElement('div');
         anime.className = 'anime';
-        root.append(anime);
+        wraper.append(anime);
 
         let img = document.createElement('img');
-        img.setAttribute('src', shiki + data.image.x96);
+        img.setAttribute('src', shiki + data.image.preview);
         anime.append(img);
 
         let name = document.createElement('p');
@@ -62,10 +65,9 @@ function addAnime(data) {
         score.textContent = data.score;
         anime.append(score);
 
-        console.log(data)
 }
 
-animeRender('1')
+animeRender('love')
 /*
 0:
 id: 36936

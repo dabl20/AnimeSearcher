@@ -1,5 +1,7 @@
 * {
-  margin: 2px;
+  margin: 0;
+  padding: 2px;
+  box-sizing: border-box;
 }
 body {
   background-color: aquamarine;
@@ -7,10 +9,15 @@ body {
 #root {
   background-color: burlywood;
   max-width: 960px;
-  margin: 5px 0 5px 0 ;
+  margin-left: auto;
+  margin-right: auto;
 }
 form input {
   background-color: antiquewhite;
-  width: 100%;
+  width: 99%;
   font-size: larger;
+}
+#wraper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }

@@ -1,7 +1,6 @@
 var shiki = 'https://shikimori.one'
 
 formRender();
-
 function formRender() {
   let root = document.createElement('div');
   root.setAttribute('id', 'root');
@@ -14,9 +13,9 @@ function formRender() {
   input.setAttribute('type', 'text');
   form.append(input);
 
-  let wraper = document.createElement('div');
-  wraper.setAttribute('id', 'wraper');
-  root.append(wraper);
+  let content = document.createElement('div');
+  content.setAttribute('id', 'content');
+  root.append(content);
 }
 
 document.forms[0].addEventListener('submit', function (event) {
@@ -37,49 +36,25 @@ function animeRender(id) {
 }
 
 function addAnime(data) {
-        let anime = document.createElement('div');
-        anime.className = 'anime';
-        wraper.append(anime);
+        let item = document.createElement('div');
+        item.className = 'item';
+        content.append(item);
 
         let img = document.createElement('img');
         img.setAttribute('src', shiki + data.image.preview);
-        anime.append(img);
+        item.append(img);
 
-        let name = document.createElement('p');
-        name.textContent = `${data.russian} / ${data.name} [${data.kind}]`;
-        anime.append(name);
+        let nameRus = document.createElement('h3');
+        nameRus.textContent = `${data.russian}`;
+        item.append(nameRus);
+        if(data.russian == '') {
+          nameRus.textContent = `${data.name}`;
+        }
 
-        let episodes = document.createElement('p');
-        episodes.textContent = `Серий ${data.episodes}`;
-        anime.append(episodes);
-
-        let aired = document.createElement('p');
-        aired.textContent = data.aired_on;
-        anime.append(aired);
-
-        let status = document.createElement('p');
-        status.textContent = `${data.status} ${data.released_on}`;
-        anime.append(status);
-
-        let score = document.createElement('p');
-        score.textContent = data.score;
-        anime.append(score);
+        let itemInfo = document.createElement('div');
+        itemInfo.className = 'itemInfo';
+        item.append(itemInfo);
 
 }
 
-animeRender('love')
-/*
-0:
-id: 36936
-name: "Mirai no Mirai"
-russian: "Мирай из будущего"
-image: {original: "/system/animes/original/36936.jpg?1578360010", preview: "/system/animes/preview/36936.jpg?1578360010", x96: "/system/animes/x96/36936.jpg?1578360010", x48: "/system/animes/x48/36936.jpg?1578360010"}
-url: "/animes/36936-mirai-no-mirai"
-kind: "movie"
-score: "7.41"
-status: "released"
-episodes: 1
-episodes_aired: 1
-aired_on: "2018-07-20"
-released_on: null
-*/
+animeRender('12')

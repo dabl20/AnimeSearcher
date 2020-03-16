@@ -9,6 +9,11 @@ function formRender() {
   let form = document.createElement('form');
   root.append(form);
 
+  let siteName = document.createElement('h1');
+  siteName.setAttribute('id', 'siteName');
+  siteName.textContent = 'ShikiSearcher';
+  form.append(siteName);
+
   let input = document.createElement('input');
   input.setAttribute('type', 'text');
   form.append(input);
@@ -36,24 +41,28 @@ function animeRender(id) {
 }
 
 function addAnime(data) {
-        let item = document.createElement('div');
-        item.className = 'item';
-        content.append(item);
+  let anchor = document.createElement('a');
 
-        let img = document.createElement('img');
-        img.setAttribute('src', shiki + data.image.preview);
-        item.append(img);
 
-        let nameRus = document.createElement('h3');
-        nameRus.textContent = `${data.russian}`;
-        item.append(nameRus);
-        if(data.russian == '') {
-          nameRus.textContent = `${data.name}`;
-        }
+  let item = document.createElement('div');
+  item.className = 'item';
+  content.append(item);
 
-        let itemInfo = document.createElement('div');
-        itemInfo.className = 'itemInfo';
-        item.append(itemInfo);
+  let itemWrapper = document.createElement('div');
+  itemWrapper.className = 'itemWrapper';
+  item.append(itemWrapper);
+
+  let img = document.createElement('img');
+  img.setAttribute('src', shiki + data.image.preview);
+  itemWrapper.append(img);
+
+  let nameRus = document.createElement('h3');
+  if (data.russian == '') {
+    nameRus.textContent = `${data.name}`;
+  } else {
+    nameRus.textContent = `${data.russian}`;
+  }
+  itemWrapper.append(nameRus);
 
 }
 

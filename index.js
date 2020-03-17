@@ -16,6 +16,10 @@ function formRender() {
 
   let input = document.createElement('input');
   input.setAttribute('type', 'text');
+  input.setAttribute('placeholder', 'Искать...');
+  input.setAttribute('maxlength', '70');
+  input.setAttribute('required', '');
+  input.setAttribute('autofocus', '');
   form.append(input);
 
   let content = document.createElement('div');

@@ -23,15 +23,6 @@ form input {
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
-  font-family: 'FontAwesome';
-}
-
-form input:before {
-  font-family: 'FontAwesome';
-  color: red;
-  position: relative;
-  left: -5px;
-  content: '\f002';
 }
 
 #content {

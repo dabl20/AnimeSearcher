@@ -17,7 +17,7 @@ function formRender() {
   let input = document.createElement('input');
   input.setAttribute('class', 'fas');
   input.setAttribute('type', 'text');
-  input.setAttribute('placeholder', '&#xf002;  Искать...');
+  input.setAttribute('placeholder', ' Искать...');
   input.setAttribute('maxlength', '70');
   input.setAttribute('required', '');
   input.setAttribute('autofocus', '');

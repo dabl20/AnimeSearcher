@@ -1,7 +1,7 @@
-var shiki = 'https://shikimori.one'
+var baseUrl = 'https://shikimori.one';
 
-formRender();
-function formRender() {
+siteRender();
+function siteRender() {
   let root = document.createElement('div');
   root.setAttribute('id', 'root');
   document.querySelector('body').prepend(root);
@@ -26,29 +26,25 @@ function formRender() {
   let content = document.createElement('div');
   content.setAttribute('id', 'content');
   root.append(content);
+
+  fetch(baseUrl + `/api/animes?&limit=50&status=latest`)
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(element => {
+      addItem(element);
+    });
+  });
 }
 
 document.forms[0].addEventListener('submit', function (event) {
   event.preventDefault();
+  document.getElementById('content').innerHTML = '';
   let data = document.querySelector('input[type="text"]').value;
-  animeRender(data);
+  contentRender(data);
   this.reset();
 })
 
-function animeRender(id) {
-  fetch(shiki + '/api/animes?&limit=10&search=' + id)
-    .then(response => response.json())
-    .then(data => {
-      data.forEach(element => {
-        addAnime(element);
-      });
-    });
-}
-
-function addAnime(data) {
-  let anchor = document.createElement('a');
-
-
+function addItem(data) {
   let item = document.createElement('div');
   item.className = 'item';
   content.append(item);
@@ -58,17 +54,24 @@ function addAnime(data) {
   item.append(itemWrapper);
 
   let img = document.createElement('img');
-  img.setAttribute('src', shiki + data.image.preview);
+  img.setAttribute('src', baseUrl + data.image.preview);
   itemWrapper.append(img);
 
-  let nameRus = document.createElement('h3');
+  let name = document.createElement('h3');
   if (data.russian == '') {
-    nameRus.textContent = `${data.name}`;
+    name.textContent = `${data.name}`;
   } else {
-    nameRus.textContent = `${data.russian}`;
+    name.textContent = `${data.russian}`;
   }
-  itemWrapper.append(nameRus);
-
+  itemWrapper.append(name);
 }
 
-animeRender('12')
+function contentRender(text) {
+  fetch(baseUrl + `/api/animes?&limit=50&search=${text}`)
+    .then(response => response.json())
+    .then(data => {
+      data.forEach(element => {
+        addItem(element);
+      });
+    });
+}

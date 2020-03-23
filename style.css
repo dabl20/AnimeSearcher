@@ -15,7 +15,7 @@ form {
   margin: 0 0 10px;
 }
 
-form input {
+form input[type='text'] {
   background-color: antiquewhite;
   font-size: larger;
   width: 100%;
@@ -58,10 +58,6 @@ img {
   background-color: rgba(0, 0, 0, .5);
   color: aliceblue;
   text-align: center;
-}
-
-.item:hover .itemInfo {
-  display: block;
 }
 
 @media (min-width: 600px) {

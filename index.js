@@ -1,46 +1,18 @@
 var baseUrl = 'https://shikimori.one';
 
-siteRender();
-function siteRender() {
-  let root = document.createElement('div');
-  root.setAttribute('id', 'root');
-  document.querySelector('body').prepend(root);
-
-  let form = document.createElement('form');
-  root.append(form);
-
-  let siteName = document.createElement('h1');
-  siteName.setAttribute('id', 'siteName');
-  siteName.textContent = 'ShikiSearcher';
-  form.append(siteName);
-
-  let input = document.createElement('input');
-  input.setAttribute('class', 'fas');
-  input.setAttribute('type', 'text');
-  input.setAttribute('placeholder', ' Искать...');
-  input.setAttribute('maxlength', '70');
-  input.setAttribute('required', '');
-  input.setAttribute('autofocus', '');
-  form.append(input);
-
-  let content = document.createElement('div');
-  content.setAttribute('id', 'content');
-  root.append(content);
-
-  fetch(baseUrl + `/api/animes?&limit=50&status=latest`)
+fetch(baseUrl + `/api/animes?&limit=50&status=latest`)
   .then(response => response.json())
   .then(data => {
     data.forEach(element => {
       addItem(element);
     });
   });
-}
 
 document.forms[0].addEventListener('submit', function (event) {
   event.preventDefault();
   document.getElementById('content').innerHTML = '';
-  let data = document.querySelector('input[type="text"]').value;
-  contentRender(data);
+  let text = document.forms[0].querySelector('input[type="text"]').value;
+  contentRender(text);
   this.reset();
 })
 
@@ -53,9 +25,13 @@ function addItem(data) {
   itemWrapper.className = 'itemWrapper';
   item.append(itemWrapper);
 
+  let imageWrapper = document.createElement('div');
+  imageWrapper.className = 'imageWrapper';
+  itemWrapper.append(imageWrapper);
+
   let img = document.createElement('img');
   img.setAttribute('src', baseUrl + data.image.preview);
-  itemWrapper.append(img);
+  imageWrapper.append(img);
 
   let name = document.createElement('h3');
   if (data.russian == '') {

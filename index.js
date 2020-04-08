@@ -36,27 +36,7 @@ function addItem(data) {
   item.append(itemWrapper);
 
   itemWrapper.addEventListener('click', function (event) {
-    let popup = document.createElement('div');
-    popup.id = 'popup';
-    root.before(popup);
-
-    let popupWrapper = document.createElement('div');
-    popupWrapper.classList = 'popupWrapper wrapper';
-    popup.append(popupWrapper);
-
-    let delPopup = document.createElement('span');
-    delPopup.classList = 'delPopup fas fa-times';
-    popupWrapper.append(delPopup);
-
-    delPopup.addEventListener('click', function() {
-      popup.remove();
-    })
-
-    fetch(baseUrl + `/api/animes/${data.id}`)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-      });
+    addPopup(data);
   })
 
   let imageWrapper = document.createElement('div');
@@ -64,14 +44,54 @@ function addItem(data) {
   itemWrapper.append(imageWrapper);
 
   let img = document.createElement('img');
-  img.setAttribute('src', baseUrl + data.image.preview);
+  img.setAttribute('src', baseUrl + data.image.original);
   imageWrapper.append(img);
 
   let name = document.createElement('h3');
   if (data.russian !== '') {
-    name.textContent = `${data.russian}`;
+    name.textContent = data.russian;
   } else {
-    name.textContent = `${data.name}`;
+    name.textContent = data.name;
   }
   itemWrapper.append(name);
+}
+
+function addPopup(data) {
+  let popup = document.createElement('div');
+  popup.id = 'popup';
+  root.before(popup);
+
+  let popupWrapper = document.createElement('div');
+  popupWrapper.className = 'popupWrapper';
+  popup.append(popupWrapper);
+
+  let delPopup = document.createElement('span');
+  delPopup.classList = 'delPopup fas fa-times';
+  popupWrapper.append(delPopup);
+
+  delPopup.addEventListener('click', function () {
+    popup.remove();
+  })
+
+  fetch(baseUrl + `/api/animes/${data.id}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      let name = document.createElement('h1');
+      name.textContent = data.name;
+      popupWrapper.append(name);
+
+      let nameRu = document.createElement('h2');
+      nameRu.textContent = data.russian;
+      popupWrapper.append(nameRu);
+
+      let img = document.createElement('img');
+      img.className = 'cover';
+      img.setAttribute('src', baseUrl + data.image.original);
+      popupWrapper.append(img);
+
+      let description = document.createElement('p');
+      description.textContent = 'Описание: ' + data.description.replace(/\[(.*?)\]/g, '');
+      popupWrapper.append(description);
+    });
 }

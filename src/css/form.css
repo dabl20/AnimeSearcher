@@ -1,0 +1,17 @@
+form {
+  background-color: gray;
+  padding: 0 15px;
+  margin: 0 0 10px;
+}
+
+form input[type='text'] {
+  background-color: antiquewhite;
+  font-size: larger;
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}

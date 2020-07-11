@@ -1,0 +1,35 @@
+#popup {
+  position: fixed;
+  background-color: black;
+  color: white;
+  width: 100vw;
+  height: 100vh;
+  animation: fadeIn 0.6s;
+  overflow: auto;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.popupWrapper {
+  padding: 15px;
+}
+
+.itemWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.delPopup {
+  float: right;
+  margin: 15px;
+  font-size: 72px;
+}

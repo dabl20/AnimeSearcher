@@ -26,3 +26,15 @@
   margin: 15px;
   font-size: 72px;
 }
+
+.delPopup:hover {
+  color: red;
+}
+
+@media (min-width: 600px) {
+  .cover {
+    width: auto;
+    float: right;
+    margin: 0 15px;
+  }
+}

@@ -21,13 +21,6 @@
   padding: 15px;
 }
 
-.itemWrapper {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
 .delPopup {
   float: right;
   margin: 15px;

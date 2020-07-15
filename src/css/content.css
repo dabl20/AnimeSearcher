@@ -16,3 +16,16 @@
     grid-template-columns: repeat(5, 1fr);
   }
 }
+
+
+.itemWrapper {
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 1px 5px 10px gray;
+}
+
+.itemWrapper:hover {
+  box-shadow: 1px 5px 15px orangered;
+}
+

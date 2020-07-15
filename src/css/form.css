@@ -15,3 +15,8 @@ form input[type='text'] {
   border-radius: 4px;
   box-sizing: border-box;
 }
+
+#siteName {
+  color: lightgray;
+  margin: auto;
+}

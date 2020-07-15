@@ -9,22 +9,6 @@
   margin-right: auto;
 }
 
-#siteName {
-  color: blueviolet;
-  margin: auto;
-}
-
-.item {
-  background-color: aquamarine;
-  border-radius: 10px;
-  overflow: hidden;
-  text-align: center;
-}
-
-.item:hover {
-  box-shadow: 1px 5px 15px black;
-}
-
 img {
   width: 100%;
 }

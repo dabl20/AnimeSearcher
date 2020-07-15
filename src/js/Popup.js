@@ -21,7 +21,7 @@ export function addPopup(data) {
     popup.remove();
   });
 
-  fetch(baseUrl + `/api/animes/${data.id}`)
+  fetch(`${baseUrl}/api/animes/${data.id}`)
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
@@ -40,7 +40,14 @@ export function addPopup(data) {
 
       const description = document.createElement("p");
       description.textContent =
-        "Описание: " + data.description.replace(/\[(.*?)\]/g, "");
+        "Описание: " +
+        data.description.replace(/\[(.*?)\]]/g, "").replace(/\[(.*?)\]/g, "");
       popupWrapper.append(description);
+    });
+
+  fetch(`${baseUrl}/api/animes/${data.id}/videos`)
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
     });
 }

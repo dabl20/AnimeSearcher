@@ -2,26 +2,29 @@
   "name": "shikisearcher",
   "version": "1.0.0",
   "description": "Search anime on Shikimori",
-  "main": "./index.js",
+  "main": "index.js",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "scripts": {
     "predeploy": "npm run build",
-    "deploy": "gh-pages -b gh-pages -d dist",
-    "clean": "rd /q /s dist",
+    "deploy": "gh-pages -d dist",
+    "clean": "del /q /s dist",
     "start": "parcel src/index.html",
-    "build-prod": "parcel build src/index.html",
+    "prebuild": "npm run clean",
     "build": "parcel build src/index.html --public-url ./ --no-content-hash"
   },
   "dependencies": {
-    "gh-pages": "^3.1.0",
     "normalize.css": "^8.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
-    "autoprefixer": "^9.8.4",
+    "autoprefixer": "^9.8.6",
+    "eslint": "^7.6.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "gh-pages": "^3.1.0",
     "parcel-bundler": "^1.12.4",
     "postcss-modules": "^3.2.0",
     "prettier": "^2.0.5"

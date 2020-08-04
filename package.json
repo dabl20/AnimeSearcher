@@ -6,6 +6,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "homepage": "https://dabl20.github.io/AnimeSearcher/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -b gh-pages -d dist",
